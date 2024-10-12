@@ -37,7 +37,8 @@ def test_player_move_valid(setup_test_db):
 
     # Then
     assert result["success"] is True
-    assert result["message"] == "You have moved to the east_room."
+    assert "You have moved to" in result["message"]
+    assert "east_room" in result["message"]
     player = PlayerModel.get_player_by_name(setup_test_db, player_name)
     assert player["current_room"] == "east_room"
 

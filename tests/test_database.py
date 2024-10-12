@@ -42,13 +42,15 @@ def test_update_player_location(setup_test_db):
     player_name = "TestPlayer"
     PlayerModel.create_player(setup_test_db, name=player_name)
     player = setup_test_db.execute("SELECT * FROM players WHERE name = ?", (player_name,)).fetchone()
+    player_dict = dict(player)  # Convert Row object to dictionary
 
     # When
-    PlayerModel.update_player_location(setup_test_db, player_id=player["id"], new_room="east_room")
+    PlayerModel.update_player_location(setup_test_db, player_name=player_dict["name"], new_room="east_room")
 
     # Then
-    updated_player = setup_test_db.execute("SELECT * FROM players WHERE id = ?", (player["id"],)).fetchone()
-    assert updated_player["current_room"] == "east_room"
+    updated_player = setup_test_db.execute("SELECT * FROM players WHERE name = ?", (player_dict["name"],)).fetchone()
+    player_dict = dict(updated_player)  # Convert Row object to dictionary
+    assert player_dict["current_room"] == "east_room"
 
 
 def test_create_room(setup_test_db):

@@ -16,12 +16,13 @@ class MovementHandler:
         if not player:
             return {"success": False, "message": "Player not found."}
 
-        current_room = player["current_room"]
+        player_dict = dict(player)
+        current_room = player_dict["current_room"]
 
         # Determine the target room based on direction
         if direction in self.room_transitions.get(current_room, {}):
             new_room = self.room_transitions[current_room][direction]
-            PlayerModel.update_player_location(connection, player["id"], new_room)
+            PlayerModel.update_player_location(connection, player_dict["name"], new_room)
             return {"success": True, "message": f"You have moved to the {new_room}."}
         else:
             return {"success": False, "message": "You can't move in that direction."}

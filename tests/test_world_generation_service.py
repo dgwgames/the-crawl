@@ -2,6 +2,9 @@
 
 import pytest
 import logging
+
+import json
+
 from app.core.services.world_generation_service import WorldGenerationService
 from app.db.models import RoomModel
 from tests.fixtures import setup_test_db
@@ -59,45 +62,50 @@ async def test_generate_map_room(world_service):
 @pytest.mark.asyncio
 async def test_generate_connected_room(world_service):
     """
-    Test generating a connected map room.
+    Test generating a connected map room or handling location-occupied errors.
     """
     logger.info("Starting test: test_generate_connected_room")
+
     # Given
     current_coordinates = {"x": 0, "y": 0}
     direction = "east"
 
     # When
     result = await world_service.generate_connected_room(current_coordinates=current_coordinates, direction=direction)
-    logger.info(f"Generated connected room: {result}")
+    logger.info(f"Generated connected room: {json.dumps(result, indent=4)}")
 
-    # Assertions
-    assert "new_location_name" in result, f"Expected 'new_location_name' in result, got: {result}"
-    assert "new_description" in result, f"Expected 'new_description' in result, got: {result}"
-    assert "origin_location_coordinates" in result, f"Expected 'origin_location_coordinates' in result, got: {result}"
+    # Check if the result contains an error about the location being occupied
+    if "error" in result and result["error"] == "Location occupied":
+        # Handle the location occupied case
+        assert result["error"] == "Location occupied", f"Expected 'Location occupied' error, got: {result['error']}"
+    else:
+        # Check that we have new locations
+        assert "new_locations" in result, f"Expected 'new_locations' in result, got: {result}"
 
-    # Check coordinate types
-    assert isinstance(result["origin_location_coordinates"], dict), \
-        f"Expected 'origin_location_coordinates' to be a dict, got: {type(result['origin_location_coordinates'])}"
-    assert "x" in result["origin_location_coordinates"], f"Expected 'x' in origin_location_coordinates"
-    assert "y" in result["origin_location_coordinates"], f"Expected 'y' in origin_location_coordinates"
+        # Iterate through new locations and run assertions
+        for location in result["new_locations"]:
+            assert "name" in location, f"Expected 'name' in location, got: {location}"
+            assert "description" in location, f"Expected 'description' in location, got: {location}"
+            assert "coords" in location, f"Expected 'coords' in location, got: {location}"
 
-    # Validate direction
-    assert result["direction_from_origin_location"] == direction, \
-        f"Expected direction to be {direction}, got: {result['direction_from_origin_location']}"
+            # Check coordinate types
+            assert isinstance(location["coords"], dict), \
+                f"Expected 'coords' to be a dict, got: {type(location['coords'])}"
+            assert "x" in location["coords"], f"Expected 'x' in coords"
+            assert "y" in location["coords"], f"Expected 'y' in coords"
 
-    # Adjusted assertion for features, sounds, and smells
-    assert "new_location_features" in result, f"Expected 'new_location_features' in result, got: {result}"
-    assert isinstance(result["new_location_features"], list), \
-        f"Expected 'new_location_features' to be a list, got: {type(result['new_location_features'])}"
+            # Assertions for features, sounds, and smells
+            assert "features" in location, f"Expected 'features' in location, got: {location}"
+            assert isinstance(location["features"], list), \
+                f"Expected 'features' to be a list, got: {type(location['features'])}"
 
-    assert "new_location_sounds" in result, f"Expected 'new_location_sounds' in result, got: {result}"
-    assert isinstance(result["new_location_sounds"], list), \
-        f"Expected 'new_location_sounds' to be a list, got: {type(result['new_location_sounds'])}"
+            assert "sounds" in location, f"Expected 'sounds' in location, got: {location}"
+            assert isinstance(location["sounds"], list), \
+                f"Expected 'sounds' to be a list, got: {type(location['sounds'])}"
 
-    assert "new_location_smells" in result, f"Expected 'new_location_smells' in result, got: {result}"
-    assert isinstance(result["new_location_smells"], list), \
-        f"Expected 'new_location_smells' to be a list, got: {type(result['new_location_smells'])}"
-
+            assert "smells" in location, f"Expected 'smells' in location, got: {location}"
+            assert isinstance(location["smells"], list), \
+                f"Expected 'smells' to be a list, got: {type(location['smells'])}"
 
 
 def test_get_room_by_coordinates(setup_test_db):

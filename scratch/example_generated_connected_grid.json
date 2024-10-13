@@ -1,0 +1,224 @@
+{
+    "new_locations": [
+        {
+            "coords": {
+                "x": 1,
+                "y": 0
+            },
+            "reverse_coords": {
+                "x": -1,
+                "y": 0
+            },
+            "name": "Greenwood Glade",
+            "description": "A lush glade marking the eastern edge of the dense Greenwood.",
+            "type": "outdoor: forest edge",
+            "features": [
+                {
+                    "type": "clearing",
+                    "description": "A small clearing with vibrant wildflowers."
+                },
+                {
+                    "type": "ancient oak",
+                    "description": "A grand old oak tree, its branches hosting a variety of birds."
+                }
+            ],
+            "sounds": [
+                "rustling leaves",
+                "birdsong"
+            ],
+            "smells": [
+                "fresh pine",
+                "damp earth"
+            ]
+        },
+        {
+            "coords": {
+                "x": 0,
+                "y": 1
+            },
+            "reverse_coords": {
+                "x": 0,
+                "y": -1
+            },
+            "name": "Fernwood North",
+            "description": "The northern fringe of the enchanted Greenwood, where the forest is dense and mysterious.",
+            "type": "outdoor: forest",
+            "features": [
+                {
+                    "type": "dense foliage",
+                    "description": "Tall trees with dense undergrowth make this area difficult to navigate."
+                }
+            ],
+            "sounds": [
+                "whispering winds",
+                "distant animal calls"
+            ],
+            "smells": [
+                "earthy moss",
+                "pine needles"
+            ]
+        },
+        {
+            "coords": {
+                "x": 0,
+                "y": -1
+            },
+            "reverse_coords": {
+                "x": 0,
+                "y": 1
+            },
+            "name": "Fox Den South",
+            "description": "A quieter part of the woodland, home to a family of foxes.",
+            "type": "outdoor: forest",
+            "features": [
+                {
+                    "type": "burrow",
+                    "description": "A fox den hidden beneath a fallen log."
+                }
+            ],
+            "sounds": [
+                "rustle of underbrush",
+                "distant stream"
+            ],
+            "smells": [
+                "scent of foliage",
+                "hint of wildlife"
+            ]
+        },
+        {
+            "coords": {
+                "x": -1,
+                "y": 0
+            },
+            "reverse_coords": {
+                "x": 1,
+                "y": 0
+            },
+            "name": "Forest Heart West",
+            "description": "The central region of Greenwood, filled with towering trees and vibrant life.",
+            "type": "outdoor: deep forest",
+            "features": [
+                {
+                    "type": "ancient groves",
+                    "description": "Clusters of ancient trees forming a natural cathedral."
+                }
+            ],
+            "sounds": [
+                "creaking branches",
+                "chattering squirrels"
+            ],
+            "smells": [
+                "rich soil",
+                "fresh rain"
+            ]
+        },
+        {
+            "coords": {
+                "x": 1,
+                "y": 1
+            },
+            "reverse_coords": {
+                "x": -1,
+                "y": -1
+            },
+            "name": "Sunlit Meadow Northeast",
+            "description": "A sun-dappled meadow at the northeast edge of the Greenwood, alive with butterflies.",
+            "type": "outdoor: meadow",
+            "features": [
+                {
+                    "type": "wildflowers",
+                    "description": "An array of colorful wildflowers thriving in the open sunlight."
+                }
+            ],
+            "sounds": [
+                "buzzing bees",
+                "gentle breeze"
+            ],
+            "smells": [
+                "flower nectar",
+                "sun-warmed grass"
+            ]
+        },
+        {
+            "coords": {
+                "x": -1,
+                "y": 1
+            },
+            "reverse_coords": {
+                "x": 1,
+                "y": -1
+            },
+            "name": "Misty Knoll Northwest",
+            "description": "A foggy rise where the forest meets open skies, offering a panoramic view.",
+            "type": "outdoor: hillside",
+            "features": [
+                {
+                    "type": "open overlook",
+                    "description": "A vantage point with sweeping views over the treetops."
+                }
+            ],
+            "sounds": [
+                "wind in the trees",
+                "distant waterfall"
+            ],
+            "smells": [
+                "fresh morning dew",
+                "woodsmoke"
+            ]
+        },
+        {
+            "coords": {
+                "x": -1,
+                "y": -1
+            },
+            "reverse_coords": {
+                "x": 1,
+                "y": 1
+            },
+            "name": "Southern Vale Southwest",
+            "description": "A sheltered vale nestled within the southern stretches of the forest, teeming with life.",
+            "type": "outdoor: valley",
+            "features": [
+                {
+                    "type": "stream",
+                    "description": "A gentle stream meandering through lush vegetation."
+                }
+            ],
+            "sounds": [
+                "babbling water",
+                "chirping insects"
+            ],
+            "smells": [
+                "freshwater",
+                "blossoming plants"
+            ]
+        },
+        {
+            "coords": {
+                "x": 1,
+                "y": -1
+            },
+            "reverse_coords": {
+                "x": -1,
+                "y": 1
+            },
+            "name": "Brackenfield Southeast",
+            "description": "Southeastern woodland clearing, where bracken and low bushes thrive.",
+            "type": "outdoor: forest edge",
+            "features": [
+                {
+                    "type": "thickets",
+                    "description": "Dense thickets providing refuge for small wildlife."
+                }
+            ],
+            "sounds": [
+                "forest murmurs",
+                "fluttering wings"
+            ],
+            "smells": [
+                "fresh ferns",
+                "woodsy aroma"
+            ]
+        }
+    ]
+}

@@ -61,6 +61,14 @@ class WorldGenerationService:
         except Exception as e:
             logger.error(f"Error while creating neighboring relation: {str(e)}")
 
+    def get_existing_neighbors(self, room_id):
+        """
+        Retrieve existing neighbors for the current room.
+        :param room_id: The ID of the current room.
+        :return: A list of neighboring room coordinates.
+        """
+        return NeighborRelationModel.get_neighbors_with_coordinates(self.connection, room_id)
+
     def get_existing_room(self, coordinates):
         """
         Retrieve an existing room based on coordinates.
@@ -83,31 +91,48 @@ class WorldGenerationService:
         if not current_room:
             return {"error": "Current room not found."}
 
+        existing_neighbors = existing_neighbors = self.get_existing_neighbors(current_room['id'])
+
         # Prepare GPT prompt with current coordinates and direction
         prompt = f"""
-        Generate a map location for a grid-based text game. 
-        The response should be a JSON object with the following structure:
+        Here are the parameters of an existing grid:
+        "origin_coords": {{"x": {current_coordinates['x']}, "y": {current_coordinates['y']}}},
+        "direction": "{direction}",
+        "existing_neighbors": {existing_neighbors},
+
+        Return JSON for new locations in the following structure:
         {{
-          "origin_location_coordinates": {{"x": {current_coordinates['x']}, "y": {current_coordinates['y']}}},
-          "direction_from_origin_location": "{direction}",
-          "new_location_coordinates": {{"x": "new x location", "y": "new y location"}},
-          "new_location_name": "provide a fictional location Name",
-          "new_description": "A detailed description of the location.",
-          "new_location_type": "outdoor: edge of a forest",
-          "new_location_features": [
-            {{"type": "feature type", "description": "A description of the feature"}}
-          ],
-          "new_location_sounds": ["list of sounds"],
-          "new_location_smells": ["list of smells"]
+          "coords": {{"x": "new x", "y": "new y"}},
+          "reverse_coords": {{"x": "reverse x", "y": "reverse y"}},
+          "name": "Fictional location",
+          "description": "Detailed location description",
+          "type": "outdoor: forest edge",
+          "features": [{{"type": "feature", "description": "Feature description"}}],
+          "sounds": ["sound1", "sound2"],
+          "smells": ["smell1", "smell2"]
         }}
-        Ensure the response is strictly in this format.
+
+        Generate the new location in the given direction and also the other 8 surrounding neighbors 
+        (north, south, east, west, northwest, northeast, southwest, southeast) if they are not in 
+        existing_neighbors. Make the types make sense for the location being generated and the types for each location
+        should not be completely different from the neighboring types, for example, you can't go directly from snow
+        to desert, nor can you go straight from forest to river, there must be a transition area that makes sense.  
+        If the requested direction is occupied, return this error structure: {{error: "Location occupied"}}.
         """
+
+        logger.info(f"Prompt sent:\n{prompt}")
 
         # Generate a new room using GPT
         new_room_data = await get_gpt_response(prompt)
 
+        """
+        if "error" in new_room_data:
+            return {"error": new_room_data["error"]}
+
         if "new_location_coordinates" not in new_room_data or "new_location_name" not in new_room_data:
             return {"error": "Incomplete room data returned by GPT."}
+
+        """
 
         """
         # Save the new room to the database

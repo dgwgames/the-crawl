@@ -3,7 +3,7 @@ import pytest
 from app.core.game_engine import GameEngine
 from app.core.inventory_handler import InventoryHandler
 from app.core.services.world_generation_service import WorldGenerationService
-from app.db.models import PlayerModel, RoomModel, InventoryModel
+from app.db.models import PlayerModel, RoomModel, InventoryModel, NeighborRelationModel
 from app.db.database import get_singleton_db_connection, init_db
 import logging
 import os
@@ -48,6 +48,7 @@ def setup_test_db():
     PlayerModel.create_table(connection)
     RoomModel.create_table(connection)
     InventoryModel.create_table(connection)
+    NeighborRelationModel.create_table(connection)
 
     # Clear any existing data to ensure a clean state
     logger.info("Clearing existing data from players, rooms, and inventory tables.")

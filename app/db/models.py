@@ -174,9 +174,14 @@ class NeighborRelationModel:
         """, (room_id, neighbor_room_id, direction))
 
     @staticmethod
-    def get_neighbors(connection, room_id: int):
-        """Retrieve all neighboring rooms of a specific room."""
-        neighbors = connection.execute("""
-            SELECT neighbor_room_id FROM neighbor_relations WHERE room_id = ?;
-        """, (room_id,)).fetchall()
-        return [neighbor["neighbor_room_id"] for neighbor in neighbors]
+    def get_neighbors_with_coordinates(connection, room_id: int):
+        """Retrieve all neighboring rooms with coordinates for a specific room."""
+        query = """
+            SELECT r.x_coordinate, r.y_coordinate
+            FROM neighbor_relations nr
+            JOIN rooms r ON nr.neighbor_room_id = r.id
+            WHERE nr.room_id = ?
+        """
+        neighbors = connection.execute(query, (room_id,)).fetchall()
+        return [{"x": neighbor["x_coordinate"], "y": neighbor["y_coordinate"]} for neighbor in neighbors]
+

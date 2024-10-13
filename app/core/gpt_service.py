@@ -1,11 +1,6 @@
 import json
 
-import pytest
 import logging
-from unittest.mock import patch
-from app.api.v1.player import register_player
-from app.api.v1.player import PlayerRegistration  # Import the Pydantic model
-from tests.fixtures import setup_test_db  # Import fixtures from the separate fixtures file
 import os
 
 logging.basicConfig(level=logging.INFO)
@@ -42,4 +37,6 @@ async def get_gpt_response(prompt: str, api_key: str = None, model: str = None):
         return json.loads(response_content)
     except Exception as e:
         return f"Error while getting response from GPT: {str(e)}"
+
+
 

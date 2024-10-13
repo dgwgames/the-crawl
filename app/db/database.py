@@ -1,4 +1,4 @@
-# Updated to use the singleton pattern
+# Updated to use the singleton pattern with unique constraint on room coordinates
 
 from app.db.singleton_db import get_singleton_db_connection
 
@@ -26,6 +26,9 @@ def init_db():
             CREATE TABLE IF NOT EXISTS rooms (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
-                description TEXT NOT NULL
+                description TEXT NOT NULL,
+                x_coordinate INTEGER NOT NULL,
+                y_coordinate INTEGER NOT NULL,
+                UNIQUE (x_coordinate, y_coordinate)  -- Adding unique constraint for coordinates
             );
         """)

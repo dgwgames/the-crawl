@@ -2,6 +2,7 @@ import pytest
 
 from app.core.game_engine import GameEngine
 from app.core.inventory_handler import InventoryHandler
+from app.core.services.world_generation_service import WorldGenerationService
 from app.db.models import PlayerModel, RoomModel, InventoryModel
 from app.db.database import get_singleton_db_connection, init_db
 import logging
@@ -23,8 +24,14 @@ def setup_test_db():
     logger.info("Setting up a persistent SQLite database for testing using the singleton connection.")
     connection = get_singleton_db_connection()
 
-    # Initialize tables if they do not exist
-    init_db()
+    # Drop and recreate tables to ensure schema is up to date
+    logger.info("Dropping existing tables if they exist.")
+    connection.execute("DROP TABLE IF EXISTS rooms;")
+    connection.execute("DROP TABLE IF EXISTS players;")
+    connection.execute("DROP TABLE IF EXISTS inventory;")
+
+    # Initialize tables with the updated schema
+    logger.info("Creating tables with the updated schema.")
     PlayerModel.create_table(connection)
     RoomModel.create_table(connection)
     InventoryModel.create_table(connection)
@@ -35,11 +42,11 @@ def setup_test_db():
     connection.execute("DELETE FROM rooms;")
     connection.execute("DELETE FROM inventory;")
 
-    # Create initial rooms
+    # Create initial rooms with coordinates
     logger.info("Creating initial rooms: 'start', 'east_room', and 'west_room'.")
-    RoomModel.create_room(connection, "start", "The starting point of your journey.")
-    RoomModel.create_room(connection, "east_room", "You have entered the east room.")
-    RoomModel.create_room(connection, "west_room", "You have entered the west room.")
+    RoomModel.create_room(connection, "start", "The starting point of your journey.", 0, 0)
+    RoomModel.create_room(connection, "east_room", "You have entered the east room.", 1, 0)
+    RoomModel.create_room(connection, "west_room", "You have entered the west room.", -1, 0)
 
     yield connection  # Provide the connection to the test function
 
@@ -55,3 +62,11 @@ def inventory_handler():
     """Provides an instance of InventoryHandler for testing."""
     logger.info("Creating an instance of InventoryHandler for testing.")
     return InventoryHandler()
+
+
+@pytest.fixture
+def world_service(setup_test_db):
+    """
+    Fixture to set up the WorldGenerationService with a test database connection.
+    """
+    return WorldGenerationService(setup_test_db)

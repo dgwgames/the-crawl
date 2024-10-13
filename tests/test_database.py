@@ -1,7 +1,5 @@
-
 import logging
 from app.db.models import PlayerModel, RoomModel
-from tests.test_utils import register_test_player  # Import from tests.test_utils
 from tests.fixtures import setup_test_db
 
 logger = logging.getLogger(__name__)
@@ -51,10 +49,12 @@ def test_create_room(setup_test_db):
     # Given
     room_name = "TreasureRoom"
     room_description = "A room filled with treasure."
+    x_coordinate = 1
+    y_coordinate = 2
 
-    logger.info("Creating room with name: %s and description: %s", room_name, room_description)
+    logger.info("Creating room with name: %s, description: %s, coordinates: (%d, %d)", room_name, room_description, x_coordinate, y_coordinate)
     # When
-    RoomModel.create_room(setup_test_db, name=room_name, description=room_description)
+    RoomModel.create_room(setup_test_db, name=room_name, description=room_description, x_coordinate=x_coordinate, y_coordinate=y_coordinate)
 
     # Then
     logger.info("Asserting the room has been inserted into the database.")
@@ -62,6 +62,8 @@ def test_create_room(setup_test_db):
     assert room is not None
     assert room["name"] == room_name
     assert room["description"] == room_description
+    assert room["x_coordinate"] == x_coordinate
+    assert room["y_coordinate"] == y_coordinate
 
 
 def test_get_room_by_name(setup_test_db):
@@ -70,7 +72,9 @@ def test_get_room_by_name(setup_test_db):
     # Given
     room_name = "HiddenChamber"
     room_description = "A secret room hidden behind a false wall."
-    RoomModel.create_room(setup_test_db, name=room_name, description=room_description)
+    x_coordinate = 3
+    y_coordinate = 4
+    RoomModel.create_room(setup_test_db, name=room_name, description=room_description, x_coordinate=x_coordinate, y_coordinate=y_coordinate)
 
     logger.info("Retrieving room by name: %s", room_name)
     # When
@@ -81,3 +85,5 @@ def test_get_room_by_name(setup_test_db):
     assert room is not None
     assert room["name"] == room_name
     assert room["description"] == room_description
+    assert room["x_coordinate"] == x_coordinate
+    assert room["y_coordinate"] == y_coordinate

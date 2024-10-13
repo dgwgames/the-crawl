@@ -1,0 +1,27 @@
+Here are the parameters of an existing grid:
+"origin_coords": {"x": 0, "y": 0},
+"direction": "east",
+"existing_neighbors": [],
+
+Return JSON for new locations in the following structure:
+{
+  "locations": [
+    {
+      "coords": {"x": "new x", "y": "new y"},
+      "reverse_coords": {"x": "reverse x", "y": "reverse y"},
+      "name": "Fictional location",
+      "description": "Detailed and rich location description",
+      "type": "outdoor: forest edge",
+      "features": [{"type": "feature", "description": "Feature description"}],
+      "sounds": ["sound1", "sound2"],
+      "smells": ["smell1", "smell2"]
+    }
+  ]
+}
+
+Generate the new location in the given direction and also the other 8 surrounding neighbors
+(north, south, east, west, northwest, northeast, southwest, southeast) if they are not in
+existing_neighbors. Provide rich and detailed descriptions for all locations like in a story,
+to enhance immersion. Ensure smooth transitions between terrain types (e.g., no abrupt changes like
+snow to desert). If the requested direction is occupied, return this error structure:
+{"error": "Location occupied"}.

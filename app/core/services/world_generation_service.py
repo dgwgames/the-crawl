@@ -95,29 +95,33 @@ class WorldGenerationService:
 
         # Prepare GPT prompt with current coordinates and direction
         prompt = f"""
-        Here are the parameters of an existing grid:
-        "origin_coords": {{"x": {current_coordinates['x']}, "y": {current_coordinates['y']}}},
-        "direction": "{direction}",
-        "existing_neighbors": {existing_neighbors},
+Here are the parameters of an existing grid:
+"origin_coords": {{"x": {current_coordinates['x']}, "y": {current_coordinates['y']}}},
+"direction": "{direction}",
+"existing_neighbors": {existing_neighbors},
 
-        Return JSON for new locations in the following structure:
-        {{
-          "coords": {{"x": "new x", "y": "new y"}},
-          "reverse_coords": {{"x": "reverse x", "y": "reverse y"}},
-          "name": "Fictional location",
-          "description": "Detailed location description",
-          "type": "outdoor: forest edge",
-          "features": [{{"type": "feature", "description": "Feature description"}}],
-          "sounds": ["sound1", "sound2"],
-          "smells": ["smell1", "smell2"]
-        }}
+Return JSON for new locations in the following structure:
+{{
+  "locations": [
+    {{
+      "coords": {{"x": "new x", "y": "new y"}},
+      "reverse_coords": {{"x": "reverse x", "y": "reverse y"}},
+      "name": "Fictional location",
+      "description": "Detailed and rich location description",
+      "type": "outdoor: forest edge",
+      "features": [{{"type": "feature", "description": "Feature description"}}],
+      "sounds": ["sound1", "sound2"],
+      "smells": ["smell1", "smell2"]
+    }}
+  ]
+}}
 
-        Generate the new location in the given direction and also the other 8 surrounding neighbors 
-        (north, south, east, west, northwest, northeast, southwest, southeast) if they are not in 
-        existing_neighbors. Make the types make sense for the location being generated and the types for each location
-        should not be completely different from the neighboring types, for example, you can't go directly from snow
-        to desert, nor can you go straight from forest to river, there must be a transition area that makes sense.  
-        If the requested direction is occupied, return this error structure: {{error: "Location occupied"}}.
+Generate the new location in the given direction and also the other 8 surrounding neighbors 
+(north, south, east, west, northwest, northeast, southwest, southeast) if they are not in 
+existing_neighbors. Provide rich and detailed descriptions for all locations like in a story, 
+to enhance immersion. Ensure smooth transitions between terrain types (e.g., no abrupt changes like 
+snow to desert). If the requested direction is occupied, return this error structure: 
+{{"error": "Location occupied"}}.
         """
 
         logger.info(f"Prompt sent:\n{prompt}")

@@ -1,5 +1,5 @@
 {
-    "new_locations": [
+    "locations": [
         {
             "coords": {
                 "x": 1,
@@ -9,26 +9,22 @@
                 "x": -1,
                 "y": 0
             },
-            "name": "Greenwood Glade",
-            "description": "A lush glade marking the eastern edge of the dense Greenwood.",
+            "name": "Eldertree Grove",
+            "description": "As you venture eastward from the origin, you find yourself at the edge of the Eldertree Grove. Towering ancient oak trees with gnarled branches paint the sky with a verdant canopy. Sunlight filters through the leaves, casting dappled shadows on the forest floor carpeted with lush ferns. The air is crisp, filled with the earthy aroma of moss and aged wood.",
             "type": "outdoor: forest edge",
             "features": [
                 {
-                    "type": "clearing",
-                    "description": "A small clearing with vibrant wildflowers."
-                },
-                {
-                    "type": "ancient oak",
-                    "description": "A grand old oak tree, its branches hosting a variety of birds."
+                    "type": "ancient oak tree",
+                    "description": "A majestic oak tree that stands sentinel at the forest's edge, its bark rough and etched with the passage of centuries."
                 }
             ],
             "sounds": [
                 "rustling leaves",
-                "birdsong"
+                "chirping birds"
             ],
             "smells": [
                 "fresh pine",
-                "damp earth"
+                "earthy wood"
             ]
         },
         {
@@ -40,103 +36,130 @@
                 "x": 0,
                 "y": -1
             },
-            "name": "Fernwood North",
-            "description": "The northern fringe of the enchanted Greenwood, where the forest is dense and mysterious.",
-            "type": "outdoor: forest",
-            "features": [
-                {
-                    "type": "dense foliage",
-                    "description": "Tall trees with dense undergrowth make this area difficult to navigate."
-                }
-            ],
-            "sounds": [
-                "whispering winds",
-                "distant animal calls"
-            ],
-            "smells": [
-                "earthy moss",
-                "pine needles"
-            ]
-        },
-        {
-            "coords": {
-                "x": 0,
-                "y": -1
-            },
-            "reverse_coords": {
-                "x": 0,
-                "y": 1
-            },
-            "name": "Fox Den South",
-            "description": "A quieter part of the woodland, home to a family of foxes.",
-            "type": "outdoor: forest",
-            "features": [
-                {
-                    "type": "burrow",
-                    "description": "A fox den hidden beneath a fallen log."
-                }
-            ],
-            "sounds": [
-                "rustle of underbrush",
-                "distant stream"
-            ],
-            "smells": [
-                "scent of foliage",
-                "hint of wildlife"
-            ]
-        },
-        {
-            "coords": {
-                "x": -1,
-                "y": 0
-            },
-            "reverse_coords": {
-                "x": 1,
-                "y": 0
-            },
-            "name": "Forest Heart West",
-            "description": "The central region of Greenwood, filled with towering trees and vibrant life.",
-            "type": "outdoor: deep forest",
-            "features": [
-                {
-                    "type": "ancient groves",
-                    "description": "Clusters of ancient trees forming a natural cathedral."
-                }
-            ],
-            "sounds": [
-                "creaking branches",
-                "chattering squirrels"
-            ],
-            "smells": [
-                "rich soil",
-                "fresh rain"
-            ]
-        },
-        {
-            "coords": {
-                "x": 1,
-                "y": 1
-            },
-            "reverse_coords": {
-                "x": -1,
-                "y": -1
-            },
-            "name": "Sunlit Meadow Northeast",
-            "description": "A sun-dappled meadow at the northeast edge of the Greenwood, alive with butterflies.",
+            "name": "Meadow's Breath",
+            "description": "North of the origin lies Meadow's Breath, a tranquil stretch of wildflowers swaying gently in the breeze. Golden daisies and lavender blooms create a patchwork quilt of colors across the meadow, their sweet fragrance carried on the wind. A solitary hawk circles overhead, its keen eyes scanning the vibrant tapestry below.",
             "type": "outdoor: meadow",
             "features": [
                 {
-                    "type": "wildflowers",
-                    "description": "An array of colorful wildflowers thriving in the open sunlight."
+                    "type": "wildflower bed",
+                    "description": "An expanse of vibrant wildflowers, brightening the landscape with hues of yellow, violet, and pink."
+                }
+            ],
+            "sounds": [
+                "whistling breeze",
+                "buzzing bees"
+            ],
+            "smells": [
+                "floral nectar",
+                "sweet hay"
+            ]
+        },
+        {
+            "coords": {
+                "x": 0,
+                "y": -1
+            },
+            "reverse_coords": {
+                "x": 0,
+                "y": 1
+            },
+            "name": "Southern Whisper",
+            "description": "To the south, you enter the realm known as Southern Whisper. Here, the forest thins, transitioning into an expanse of wispy grasses that gently slope down towards a glistening stream. The gentle babble of water over stone creates a serene soundtrack as small mammals scurry amidst the undergrowth.",
+            "type": "outdoor: grassland",
+            "features": [
+                {
+                    "type": "babbling stream",
+                    "description": "A clear stream flowing amidst pebbles and rocks, singing softly as it meanders southward."
+                }
+            ],
+            "sounds": [
+                "gentle babbling",
+                "rustling grass"
+            ],
+            "smells": [
+                "fresh water",
+                "green grass"
+            ]
+        },
+        {
+            "coords": {
+                "x": -1,
+                "y": 0
+            },
+            "reverse_coords": {
+                "x": 1,
+                "y": 0
+            },
+            "name": "Western Brink",
+            "description": "West of the origin, the forest gives way to the Western Brink, where the open sky meets the rugged land. Here, the ground is punctuated by rocky outcrops, and the air tastes of freedom and possibility. Hawks nest in the craggy nooks, and moss peppers the stones with patches of green.",
+            "type": "outdoor: rocky outcrop",
+            "features": [
+                {
+                    "type": "hawk's nest",
+                    "description": "A sheltered nest perched on a rocky ledge, home to a family of hawks."
+                }
+            ],
+            "sounds": [
+                "whistling wind",
+                "distant howls"
+            ],
+            "smells": [
+                "crisp air",
+                "earthy stone"
+            ]
+        },
+        {
+            "coords": {
+                "x": 1,
+                "y": 1
+            },
+            "reverse_coords": {
+                "x": -1,
+                "y": -1
+            },
+            "name": "Sunny Glade",
+            "description": "Northeast lies the Sunny Glade, an idyllic open area amidst the woods where sunlight pools like liquid gold. The tall grass here dances with the laughter of a gentle breeze, inviting creatures of all kinds to bask in its warmth.",
+            "type": "outdoor: sunlit clearing",
+            "features": [
+                {
+                    "type": "singing birds",
+                    "description": "A chorus of small birds fills the air with their melodious calls, hiding amidst the branches."
+                }
+            ],
+            "sounds": [
+                "birdsong",
+                "rustling leaves"
+            ],
+            "smells": [
+                "sun-warmed earth",
+                "sweet pollen"
+            ]
+        },
+        {
+            "coords": {
+                "x": 1,
+                "y": -1
+            },
+            "reverse_coords": {
+                "x": -1,
+                "y": 1
+            },
+            "name": "Hillside Orchard",
+            "description": "The southeastern Hillside Orchard is a beautiful sight where fruit-bearing trees grow wild and untamed. Juicy apples and succulent pears dapple the branches, tempting all who pass by to sample their bounty while a soft buzzing tells of happy bees hard at work.",
+            "type": "outdoor: orchard",
+            "features": [
+                {
+                    "type": "laden fruit trees",
+                    "description": "Trees bursting with ripe, colorful fruit ready to be picked and savored."
                 }
             ],
             "sounds": [
                 "buzzing bees",
-                "gentle breeze"
+                "rustling branches"
             ],
             "smells": [
-                "flower nectar",
-                "sun-warmed grass"
+                "ripe apples",
+                "sweet fruits"
             ]
         },
         {
@@ -148,22 +171,22 @@
                 "x": 1,
                 "y": -1
             },
-            "name": "Misty Knoll Northwest",
-            "description": "A foggy rise where the forest meets open skies, offering a panoramic view.",
-            "type": "outdoor: hillside",
+            "name": "Shadowfen Marsh",
+            "description": "Northwest is the Shadowfen Marsh, a mysterious place where mist licks at your ankles, and twisted willows watch silently with gnarled limbs. Water lilies float serenely on the still water, their broad leaves home to resting dragonflies.",
+            "type": "outdoor: marsh",
             "features": [
                 {
-                    "type": "open overlook",
-                    "description": "A vantage point with sweeping views over the treetops."
+                    "type": "willow tree",
+                    "description": "Ancient willows, their branches dipping low into the water, providing shade and a sense of otherworldliness."
                 }
             ],
             "sounds": [
-                "wind in the trees",
-                "distant waterfall"
+                "croaking frogs",
+                "buzzing insects"
             ],
             "smells": [
-                "fresh morning dew",
-                "woodsmoke"
+                "damp earth",
+                "peaty water"
             ]
         },
         {
@@ -175,49 +198,22 @@
                 "x": 1,
                 "y": 1
             },
-            "name": "Southern Vale Southwest",
-            "description": "A sheltered vale nestled within the southern stretches of the forest, teeming with life.",
-            "type": "outdoor: valley",
+            "name": "Whispering Hollow",
+            "description": "To the southwest is Whispering Hollow, a secluded dell where tall pines whisper secrets in the language of the wind. Soft moss cushions your step and sleepy deer peer curiously between the trunks.",
+            "type": "outdoor: pine forest",
             "features": [
                 {
-                    "type": "stream",
-                    "description": "A gentle stream meandering through lush vegetation."
+                    "type": "tall pine trees",
+                    "description": "Towering pines that sway gently and offer a home to countless forest creatures."
                 }
             ],
             "sounds": [
-                "babbling water",
-                "chirping insects"
+                "whispering pines",
+                "rustling needles"
             ],
             "smells": [
-                "freshwater",
-                "blossoming plants"
-            ]
-        },
-        {
-            "coords": {
-                "x": 1,
-                "y": -1
-            },
-            "reverse_coords": {
-                "x": -1,
-                "y": 1
-            },
-            "name": "Brackenfield Southeast",
-            "description": "Southeastern woodland clearing, where bracken and low bushes thrive.",
-            "type": "outdoor: forest edge",
-            "features": [
-                {
-                    "type": "thickets",
-                    "description": "Dense thickets providing refuge for small wildlife."
-                }
-            ],
-            "sounds": [
-                "forest murmurs",
-                "fluttering wings"
-            ],
-            "smells": [
-                "fresh ferns",
-                "woodsy aroma"
+                "pine resin",
+                "cool earth"
             ]
         }
     ]

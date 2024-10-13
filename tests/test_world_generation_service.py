@@ -80,10 +80,10 @@ async def test_generate_connected_room(world_service):
         assert result["error"] == "Location occupied", f"Expected 'Location occupied' error, got: {result['error']}"
     else:
         # Check that we have new locations
-        assert "new_locations" in result, f"Expected 'new_locations' in result, got: {result}"
+        assert "locations" in result, f"Expected 'locations' in result, got: {result}"
 
         # Iterate through new locations and run assertions
-        for location in result["new_locations"]:
+        for location in result["locations"]:
             assert "name" in location, f"Expected 'name' in location, got: {location}"
             assert "description" in location, f"Expected 'description' in location, got: {location}"
             assert "coords" in location, f"Expected 'coords' in location, got: {location}"

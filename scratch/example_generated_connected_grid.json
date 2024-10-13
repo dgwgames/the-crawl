@@ -9,22 +9,26 @@
                 "x": -1,
                 "y": 0
             },
-            "name": "Eldertree Grove",
-            "description": "As you venture eastward from the origin, you find yourself at the edge of the Eldertree Grove. Towering ancient oak trees with gnarled branches paint the sky with a verdant canopy. Sunlight filters through the leaves, casting dappled shadows on the forest floor carpeted with lush ferns. The air is crisp, filled with the earthy aroma of moss and aged wood.",
+            "name": "Whispering Pines",
+            "description": "As you journey east, you find yourself at the edge of a dense forest. Tall pine trees stretch towards the sky, their needles rustling with a gentle whisper as the wind dances through them. The ground is a bed of soft pine needles that cushion your steps.",
             "type": "outdoor: forest edge",
             "features": [
                 {
-                    "type": "ancient oak tree",
-                    "description": "A majestic oak tree that stands sentinel at the forest's edge, its bark rough and etched with the passage of centuries."
+                    "type": "tree",
+                    "description": "A towering pine tree with thick branches."
+                },
+                {
+                    "type": "clearing",
+                    "description": "A small clearing where sunlight filters through."
                 }
             ],
             "sounds": [
                 "rustling leaves",
-                "chirping birds"
+                "distant birdsong"
             ],
             "smells": [
                 "fresh pine",
-                "earthy wood"
+                "earthy forest floor"
             ]
         },
         {
@@ -34,159 +38,152 @@
             },
             "reverse_coords": {
                 "x": 0,
-                "y": -1
-            },
-            "name": "Meadow's Breath",
-            "description": "North of the origin lies Meadow's Breath, a tranquil stretch of wildflowers swaying gently in the breeze. Golden daisies and lavender blooms create a patchwork quilt of colors across the meadow, their sweet fragrance carried on the wind. A solitary hawk circles overhead, its keen eyes scanning the vibrant tapestry below.",
-            "type": "outdoor: meadow",
-            "features": [
-                {
-                    "type": "wildflower bed",
-                    "description": "An expanse of vibrant wildflowers, brightening the landscape with hues of yellow, violet, and pink."
-                }
-            ],
-            "sounds": [
-                "whistling breeze",
-                "buzzing bees"
-            ],
-            "smells": [
-                "floral nectar",
-                "sweet hay"
-            ]
-        },
-        {
-            "coords": {
-                "x": 0,
-                "y": -1
-            },
-            "reverse_coords": {
-                "x": 0,
-                "y": 1
-            },
-            "name": "Southern Whisper",
-            "description": "To the south, you enter the realm known as Southern Whisper. Here, the forest thins, transitioning into an expanse of wispy grasses that gently slope down towards a glistening stream. The gentle babble of water over stone creates a serene soundtrack as small mammals scurry amidst the undergrowth.",
-            "type": "outdoor: grassland",
-            "features": [
-                {
-                    "type": "babbling stream",
-                    "description": "A clear stream flowing amidst pebbles and rocks, singing softly as it meanders southward."
-                }
-            ],
-            "sounds": [
-                "gentle babbling",
-                "rustling grass"
-            ],
-            "smells": [
-                "fresh water",
-                "green grass"
-            ]
-        },
-        {
-            "coords": {
-                "x": -1,
-                "y": 0
-            },
-            "reverse_coords": {
-                "x": 1,
-                "y": 0
-            },
-            "name": "Western Brink",
-            "description": "West of the origin, the forest gives way to the Western Brink, where the open sky meets the rugged land. Here, the ground is punctuated by rocky outcrops, and the air tastes of freedom and possibility. Hawks nest in the craggy nooks, and moss peppers the stones with patches of green.",
-            "type": "outdoor: rocky outcrop",
-            "features": [
-                {
-                    "type": "hawk's nest",
-                    "description": "A sheltered nest perched on a rocky ledge, home to a family of hawks."
-                }
-            ],
-            "sounds": [
-                "whistling wind",
-                "distant howls"
-            ],
-            "smells": [
-                "crisp air",
-                "earthy stone"
-            ]
-        },
-        {
-            "coords": {
-                "x": 1,
-                "y": 1
-            },
-            "reverse_coords": {
-                "x": -1,
                 "y": -1
             },
             "name": "Sunny Glade",
-            "description": "Northeast lies the Sunny Glade, an idyllic open area amidst the woods where sunlight pools like liquid gold. The tall grass here dances with the laughter of a gentle breeze, inviting creatures of all kinds to bask in its warmth.",
-            "type": "outdoor: sunlit clearing",
+            "description": "Heading north, you enter a sun-dappled glade where wildflowers bloom in abundance. The vibrant colors are a feast for the eyes, and the air is filled with the buzzing of bees and the sweet scent of nectar.",
+            "type": "outdoor: meadow",
             "features": [
                 {
-                    "type": "singing birds",
-                    "description": "A chorus of small birds fills the air with their melodious calls, hiding amidst the branches."
-                }
-            ],
-            "sounds": [
-                "birdsong",
-                "rustling leaves"
-            ],
-            "smells": [
-                "sun-warmed earth",
-                "sweet pollen"
-            ]
-        },
-        {
-            "coords": {
-                "x": 1,
-                "y": -1
-            },
-            "reverse_coords": {
-                "x": -1,
-                "y": 1
-            },
-            "name": "Hillside Orchard",
-            "description": "The southeastern Hillside Orchard is a beautiful sight where fruit-bearing trees grow wild and untamed. Juicy apples and succulent pears dapple the branches, tempting all who pass by to sample their bounty while a soft buzzing tells of happy bees hard at work.",
-            "type": "outdoor: orchard",
-            "features": [
+                    "type": "wildflower patch",
+                    "description": "A cluster of wildflowers in full bloom."
+                },
                 {
-                    "type": "laden fruit trees",
-                    "description": "Trees bursting with ripe, colorful fruit ready to be picked and savored."
+                    "type": "boulder",
+                    "description": "A large, sun-warmed boulder perfect for sitting."
                 }
             ],
             "sounds": [
                 "buzzing bees",
-                "rustling branches"
+                "whispering breeze"
             ],
             "smells": [
-                "ripe apples",
-                "sweet fruits"
+                "sweet nectar",
+                "lush grass"
             ]
         },
         {
             "coords": {
-                "x": -1,
-                "y": 1
-            },
-            "reverse_coords": {
-                "x": 1,
+                "x": 0,
                 "y": -1
             },
-            "name": "Shadowfen Marsh",
-            "description": "Northwest is the Shadowfen Marsh, a mysterious place where mist licks at your ankles, and twisted willows watch silently with gnarled limbs. Water lilies float serenely on the still water, their broad leaves home to resting dragonflies.",
-            "type": "outdoor: marsh",
+            "reverse_coords": {
+                "x": 0,
+                "y": 1
+            },
+            "name": "Brookside Trail",
+            "description": "To the south, a narrow trail winds alongside a babbling brook. The sound of water flowing over stones is soothing, and the air is cool and refreshing as it drifts off the surface of the brook.",
+            "type": "outdoor: riverbank",
             "features": [
+                {
+                    "type": "brook",
+                    "description": "A clear, flowing brook with smooth stones."
+                },
                 {
                     "type": "willow tree",
-                    "description": "Ancient willows, their branches dipping low into the water, providing shade and a sense of otherworldliness."
+                    "description": "A willow tree drapes its branches over the water."
                 }
             ],
             "sounds": [
-                "croaking frogs",
-                "buzzing insects"
+                "babbling brook",
+                "chirping crickets"
             ],
             "smells": [
-                "damp earth",
-                "peaty water"
+                "fresh water",
+                "mossy stones"
+            ]
+        },
+        {
+            "coords": {
+                "x": -1,
+                "y": 0
+            },
+            "reverse_coords": {
+                "x": 1,
+                "y": 0
+            },
+            "name": "Sunlit Path",
+            "description": "Heading west, you come upon a sunlit path lined with wild grass. The path is dotted with daisies that sway in rhythm with the breeze, inviting you to explore further as sunlight filters through scattered clouds.",
+            "type": "outdoor: field",
+            "features": [
+                {
+                    "type": "daisies",
+                    "description": "A patch of daisies bobbing in the breeze."
+                },
+                {
+                    "type": "hedge",
+                    "description": "A low hedge acting as a natural boundary."
+                }
+            ],
+            "sounds": [
+                "whistling wind",
+                "rustling grass"
+            ],
+            "smells": [
+                "fresh grass",
+                "wildflowers"
+            ]
+        },
+        {
+            "coords": {
+                "x": 1,
+                "y": 1
+            },
+            "reverse_coords": {
+                "x": -1,
+                "y": -1
+            },
+            "name": "Stony Overlook",
+            "description": "To the northeast, you stand on a rocky outcrop that offers a breathtaking view of the surrounding forest. The rocks are warm underfoot, and you feel a sense of awe as you gaze at the canopy below.",
+            "type": "outdoor: cliff edge",
+            "features": [
+                {
+                    "type": "rock formation",
+                    "description": "Smooth stone formations with views."
+                },
+                {
+                    "type": "fern",
+                    "description": "Ferns growing in the crevices of the rocks."
+                }
+            ],
+            "sounds": [
+                "distant eagle cry",
+                "wind against rock"
+            ],
+            "smells": [
+                "crisp air",
+                "damp stone"
+            ]
+        },
+        {
+            "coords": {
+                "x": -1,
+                "y": 1
+            },
+            "reverse_coords": {
+                "x": 1,
+                "y": -1
+            },
+            "name": "Wooded Hollow",
+            "description": "Traveling northwest, you discover a secluded hollow beneath a canopy of oak trees. The atmosphere is serene, with the soft glow of sunlight peeking through the leaves, casting intricate patterns on the forest floor.",
+            "type": "outdoor: forest",
+            "features": [
+                {
+                    "type": "oak tree",
+                    "description": "An ancient oak with a thick trunk."
+                },
+                {
+                    "type": "mossy log",
+                    "description": "A fallen log covered in green moss."
+                }
+            ],
+            "sounds": [
+                "woodland fauna",
+                "leaves rustling"
+            ],
+            "smells": [
+                "earthy woodland",
+                "mossy freshness"
             ]
         },
         {
@@ -198,22 +195,57 @@
                 "x": 1,
                 "y": 1
             },
-            "name": "Whispering Hollow",
-            "description": "To the southwest is Whispering Hollow, a secluded dell where tall pines whisper secrets in the language of the wind. Soft moss cushions your step and sleepy deer peer curiously between the trunks.",
-            "type": "outdoor: pine forest",
+            "name": "Grazing Meadow",
+            "description": "To the southwest, a sprawling meadow stretches out before you, where the grass sways in the wind and wildflowers poke through in patches of color. You can see deer grazing in the distance, completing the tranquil scene.",
+            "type": "outdoor: meadow",
             "features": [
                 {
-                    "type": "tall pine trees",
-                    "description": "Towering pines that sway gently and offer a home to countless forest creatures."
+                    "type": "deer",
+                    "description": "A small herd of deer grazing."
+                },
+                {
+                    "type": "wildflowers",
+                    "description": "A variety of brightly colored wildflowers."
                 }
             ],
             "sounds": [
-                "whispering pines",
-                "rustling needles"
+                "wind through grass",
+                "distant animal sounds"
             ],
             "smells": [
-                "pine resin",
-                "cool earth"
+                "wildflower perfume",
+                "fresh earth"
+            ]
+        },
+        {
+            "coords": {
+                "x": 1,
+                "y": -1
+            },
+            "reverse_coords": {
+                "x": -1,
+                "y": 1
+            },
+            "name": "Cedar Ridge",
+            "description": "In the southeast, you find a gentle ridge covered in cedar trees. The distinctive scent of cedar wood fills the air, and you feel invigorated as you walk amongst the sturdy trees with their reddish bark.",
+            "type": "outdoor: hillside",
+            "features": [
+                {
+                    "type": "cedar tree",
+                    "description": "Tall cedar trees with red bark."
+                },
+                {
+                    "type": "birds",
+                    "description": "Birds flitting between branches, singing."
+                }
+            ],
+            "sounds": [
+                "rustling leaves",
+                "birdsong"
+            ],
+            "smells": [
+                "cedar wood",
+                "cool breeze"
             ]
         }
     ]

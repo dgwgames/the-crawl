@@ -6,9 +6,22 @@ from app.core.services.world_generation_service import WorldGenerationService
 from app.db.models import PlayerModel, RoomModel, InventoryModel
 from app.db.database import get_singleton_db_connection, init_db
 import logging
+import os
 
-logging.basicConfig(level=logging.INFO)
+# Ensure the logs directory exists
+os.makedirs("logs", exist_ok=True)
+
+# Configure logging to write to both console and file
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),  # Console output
+        logging.FileHandler("logs/app.log")  # File output
+    ]
+)
 logger = logging.getLogger(__name__)
+logger.info("Logging to both console and file.")
 
 
 @pytest.fixture

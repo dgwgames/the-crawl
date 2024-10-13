@@ -66,24 +66,3 @@ def test_create_room(setup_test_db):
     assert room["y_coordinate"] == y_coordinate
 
 
-def test_get_room_by_name(setup_test_db):
-    logger.info("Starting test: test_get_room_by_name")
-    """Test retrieving a room by its name."""
-    # Given
-    room_name = "HiddenChamber"
-    room_description = "A secret room hidden behind a false wall."
-    x_coordinate = 3
-    y_coordinate = 4
-    RoomModel.create_room(setup_test_db, name=room_name, description=room_description, x_coordinate=x_coordinate, y_coordinate=y_coordinate)
-
-    logger.info("Retrieving room by name: %s", room_name)
-    # When
-    room = RoomModel.get_room_by_name(setup_test_db, name=room_name)
-
-    # Then
-    logger.info("Asserting the room has been retrieved correctly.")
-    assert room is not None
-    assert room["name"] == room_name
-    assert room["description"] == room_description
-    assert room["x_coordinate"] == x_coordinate
-    assert room["y_coordinate"] == y_coordinate

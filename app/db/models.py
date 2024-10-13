@@ -72,6 +72,13 @@ class RoomModel:
         """, (coordinates['x'], coordinates['y'])).fetchone()
         return room
 
+    @staticmethod
+    def get_room_by_name(connection, name: str):
+        """Retrieve a room by its name."""
+        room = connection.execute("""
+            SELECT * FROM rooms WHERE name = ?;
+        """, (name,)).fetchone()
+        return room
 
 class InventoryModel:
     @staticmethod

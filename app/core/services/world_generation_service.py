@@ -78,36 +78,59 @@ class WorldGenerationService:
         :param direction: The direction in which to generate the connected room.
         :return: The generated room data.
         """
+        # Retrieve current room from coordinates
         current_room = self.get_existing_room(current_coordinates)
         if not current_room:
             return {"error": "Current room not found."}
 
-        # Generate a new room with a prompt indicating the outdoor nature and direction
-        prompt = f"The map room is located {direction} of {current_room['name']}"
-        new_room_data = await self.generate_map_room(prompt)
+        # Prepare GPT prompt with current coordinates and direction
+        prompt = f"""
+        Generate a map location for a grid-based text game. 
+        The response should be a JSON object with the following structure:
+        {{
+          "origin_location_coordinates": {{"x": {current_coordinates['x']}, "y": {current_coordinates['y']}}},
+          "direction_from_origin_location": "{direction}",
+          "new_location_coordinates": {{"x": "new x location", "y": "new y location"}},
+          "new_location_name": "provide a fictional location Name",
+          "new_description": "A detailed description of the location.",
+          "new_location_type": "outdoor: edge of a forest",
+          "new_location_features": [
+            {{"type": "feature type", "description": "A description of the feature"}}
+          ],
+          "new_location_sounds": ["list of sounds"],
+          "new_location_smells": ["list of smells"]
+        }}
+        Ensure the response is strictly in this format.
+        """
 
-        # Save new room to the database
+        # Generate a new room using GPT
+        new_room_data = await get_gpt_response(prompt)
+
+        if "new_location_coordinates" not in new_room_data or "new_location_name" not in new_room_data:
+            return {"error": "Incomplete room data returned by GPT."}
+
+        """
+        # Save the new room to the database
         self.save_map_room_to_db(new_room_data)
 
-        # Retrieve the new room by its coordinates to get its ID
-        new_room = self.get_existing_room(new_room_data['grid_coordinates'])
+        # Retrieve the new room by its coordinates
+        new_room = self.get_existing_room(new_room_data['new_location_coordinates'])
         if not new_room:
             return {"error": "Failed to retrieve the newly created room."}
-
+        
         # Create relationship in the database
         self.connect_rooms(current_room['id'], new_room['id'], direction)
 
-        # Create the reverse connection (if necessary)
+        # Reverse connection (e.g., east -> west)
         reverse_directions = {
             "north": "south",
             "south": "north",
             "east": "west",
             "west": "east"
         }
-
         reverse_direction = reverse_directions.get(direction)
         if reverse_direction:
             self.connect_rooms(new_room['id'], current_room['id'], reverse_direction)
-
+        """
         # Return the new room data
         return new_room_data

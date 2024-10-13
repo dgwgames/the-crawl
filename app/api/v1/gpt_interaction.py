@@ -12,6 +12,6 @@ class GptRequestBody(BaseModel):
 
 
 @router.post("/gpt_interaction")
-async def gpt_interaction(request_body: GptRequestBody, connection=Depends(get_singleton_db_connection)):
+async def gpt_interaction(request_body: GptRequestBody):
     response = await get_gpt_response(request_body.prompt)
     return {"response": response}

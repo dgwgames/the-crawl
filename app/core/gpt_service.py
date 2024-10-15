@@ -36,7 +36,8 @@ async def get_gpt_response(prompt: str, api_key: str = None, model: str = None):
         response_content = response_content.replace("\n", "")
         return json.loads(response_content)
     except Exception as e:
-        return f"Error while getting response from GPT: {str(e)}"
+        logger.error(f"Error while getting response from GPT: {str(e)}")
+        return "An internal error has occurred while processing the request."
 
 
 

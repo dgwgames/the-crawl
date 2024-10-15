@@ -14,4 +14,6 @@ class GptRequestBody(BaseModel):
 @router.post("/gpt_interaction")
 async def gpt_interaction(request_body: GptRequestBody):
     response = await get_gpt_response(request_body.prompt)
+    if "Error" in response:
+        return {"error": response}
     return {"response": response}
